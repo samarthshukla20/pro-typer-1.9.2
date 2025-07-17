@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+}
+
+android {
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            // signingConfig removed
+            minifyEnabled false
+            shrinkResources false
+        }
+
+    }
+
+
+    namespace 'com.samarthshukla.protyper'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.samarthshukla.protyper"
+        minSdk 24
+        targetSdk 36
+        versionCode 14
+        versionName "1.9.1"
+
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false  // Disable minify in debug for now
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    buildFeatures {
+        viewBinding false  // If not using ViewBinding, this is fine.
+    }
+}
+
+dependencies {
+    implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3'
+    implementation 'com.google.firebase:firebase-messaging:24.1.1'
+    // Use the stable version of Material Components for XML-based UI
+    implementation 'com.google.android.material:material:1.13.0-alpha11'
+    // Correct stable version for XML UI
+
+    // Other dependencies
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation('com.google.android.gms:play-services-ads:24.4.0')
+    implementation 'com.google.firebase:firebase-analytics:22.4.0'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'androidx.recyclerview:recyclerview:1.4.0'
+    implementation 'androidx.browser:browser:1.8.0'
+    implementation 'com.google.android.play:review:2.0.2'
+    implementation 'com.google.android.play:app-update:2.1.0'
+
+    // Exclude problematic dependencies for SDK 33
+    implementation('androidx.credentials:credentials:1.5.0') {
+        exclude group: 'androidx.credentials', module: 'credentials'
+    }
+    implementation('androidx.credentials:credentials-play-services-auth:1.5.0') {
+        exclude group: 'androidx.credentials', module: 'credentials-play-services-auth'
+    }
+}

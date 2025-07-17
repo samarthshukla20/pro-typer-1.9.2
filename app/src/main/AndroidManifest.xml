@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.samarthshukla.protyper">
+
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Application declaration -->
+    <application
+        android:name="com.samarthshukla.protyper.AppName"
+        android:allowBackup="true"
+        android:icon="@drawable/pro_typer_tm"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/pro_typer_tm"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TypingMaster"> <!-- Updated theme to Material3 -->
+
+       <meta-data
+        android:name="com.google.android.gms.ads.APPLICATION_ID"
+        android:value="ca-app-pub-6807409350203174~6255625039"/>
+        
+        <!-- SplashActivity (Launch Activity) -->
+        <activity android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Splash">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".MainActivity"/>
+
+
+        <!-- DifficultyActivity -->
+        <activity android:name=".DifficultyActivity"
+            android:exported="true" />
+
+        <!-- EasyActivity -->
+        <activity android:name=".EasyModeActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        
+        <activity android:name=".MediumModeActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+        
+        <activity android:name=".HardModeActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize" />
+
+
+
+        <!-- TypingActivity -->
+        <activity android:name=".TypingActivity"
+            android:exported="true" />
+        
+       <activity android:name=".HistoryActivity" />
+        
+       <activity android:name=".HowToPlayActivity" />
+
+       <activity android:name=".AboutActivity" />
+        
+        <activity android:name=".ParagraphActivity"
+            android:exported="true" />
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
+        </service>
+
+    </application>
+
+</manifest>

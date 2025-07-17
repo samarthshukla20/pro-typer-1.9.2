@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Outer layer for the elevation/shadow effect -->
+    <item android:right="2dp" android:left="2dp" android:top="2dp" android:bottom="2dp">
+        <shape>
+            <solid android:color="@android:color/white" />  <!-- White background -->
+            <corners android:radius="16dp" />               <!-- Rounded corners -->
+        </shape>
+    </item>
+    
+    <!-- Inner content layer for the form -->
+    <item>
+        <shape>
+            <solid android:color="@android:color/white" />  <!-- White content background -->
+            <corners android:radius="16dp" />               <!-- Rounded corners -->
+        </shape>
+    </item>
+</layer-list>

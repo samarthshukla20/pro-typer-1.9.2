@@ -1,0 +1,3 @@
+<resources>
+    <dimen name="popup_menu_corner_radius">24dp</dimen>
+</resources>

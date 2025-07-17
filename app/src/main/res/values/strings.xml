@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Game Strings -->
+    <string name="app_name">Pro Typer</string>
+    <string name="score_format">%d</string>
+    <string name="timer_format">%ds</string>
+    <string name="game_over">Game Over</string>
+    <string name="final_score">Final Score: %d</string>
+    <string name="retry">Retry</string>
+    <string name="exit">Exit</string>
+    <string name="score_default">0</string>
+    <string name="timer_default">10s</string>
+    <string name="type_hint">Type here…</string>
+
+<string name="app_version">v1.9.2</string>
+
+    <!-- Firebase OAuth Client ID -->
+    <string name="default_web_client_id">AIzaSyCZ9D-cCTeCN4xHRtgCElRBq0X25ruiPp8</string>
+
+    <!-- Login Page Strings -->
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="email_hint">Enter your email</string>
+    <string name="password_hint">Enter your password</string>
+    <string name="google_login_button_text">Continue with Google</string>
+    <string name="signup_link_text">Do not have an account? Sign up</string>
+
+    <!-- Optional: Bottomsheet drag handle clicked (Check its usage in app) -->
+    <string name="bottomsheet_drag_handle_clicked">Drag handle clicked</string>
+    
+   <string name="navigation_drawer_open">Open Navigation Drawer</string>
+<string name="navigation_drawer_close">Close Navigation Drawer</string>
+    
+   <!-- Ad units -->
+    <!-- ca-app-pub-3940256099942544/4411468910 - test int-->
+    <!-- ca-app-pub-6807409350203174/4005808164 - real int-->
+    <!-- ca-app-pub-3940256099942544/9214589741 - test ban-->
+    <!-- ca-app-pub-6807409350203174/7543821829 - real ban-->
+    <!-- ca-app-pub-3940256099942544/1712485313 - test rew-->
+    <!-- ca-app-pub-6807409350203174/9374454761 - real rew-->
+    <string name="Interstitial">ca-app-pub-3940256099942544/4411468910</string>
+    <string name="Banner">ca-app-pub-3940256099942544/9214589741</string>
+    <string name="Rewarded">ca-app-pub-3940256099942544/1712485313</string>
+    
+    
+</resources>

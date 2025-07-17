@@ -1,0 +1,18 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()   // Required for Gradle plugin portal
+        google()               // Google's Maven repository
+        mavenCentral()         // Maven Central repository
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)  // Ensures no project-level repositories
+    repositories {
+        google()               // Google's Maven repository
+        mavenCentral()         // Maven Central repository
+    }
+}
+
+rootProject.name = "Pro Typer"
+include(":app")

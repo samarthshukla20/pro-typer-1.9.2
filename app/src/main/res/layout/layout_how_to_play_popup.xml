@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="32dp"
+    android:background="@android:color/transparent"
+    
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp"
+    app:cardBackgroundColor="?attr/colorPrimaryContainer"
+    app:strokeColor="?attr/colorPrimary"
+    app:strokeWidth="2dp"
+    app:contentPadding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- How To Play Heading -->
+        <TextView
+            android:id="@+id/tvHeadingPopup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How To Play"
+            android:textSize="40sp"
+            android:fontFamily="@font/difficulty"
+            android:textColor="?attr/colorOnSurface"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingBottom="8dp"/>
+
+        <!-- Instruction Text -->
+
+        <!-- Button Container for mode selection -->
+        <TextView
+            android:id="@+id/tvInstructionPopup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font"
+            android:paddingBottom="16dp"
+            android:text="Instructions on How to Play..."
+            android:textColor="?attr/colorOnSurface"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:id="@+id/buttonContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSingleWordPopup"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="SINGLE WORD MODE"
+                android:fontFamily="@font/font"
+                android:layout_marginBottom="16dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnParagraphPopup"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="PARAGRAPH MODE"
+                android:fontFamily="@font/font"
+                android:layout_marginBottom="16dp"/>
+
+            
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

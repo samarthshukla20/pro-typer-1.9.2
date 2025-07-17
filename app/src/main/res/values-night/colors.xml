@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources> 
+    <color name="textColor">#FFFFFF</color> <!-- White for dark mode --> 
+    
+    <!-- Other colors… -->
+    
+    <!-- In dark mode, force the unfocused border to be white (or another light color) -->
+    <color name="border_unfocused">@android:color/white</color>
+</resources>

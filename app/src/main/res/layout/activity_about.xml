@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Independent Back Button -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="?attr/selectableItemBackground"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back"
+        app:tint="?attr/colorOnSurface" />
+
+    <!-- NestedScrollView for full scrolling content; no right padding so scrollbar is flush -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:clipToPadding="false"
+        android:fadeScrollbars="false"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:scrollbarStyle="outsideOverlay"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <!-- Header: About text (centered) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/difficulty"
+                    android:gravity="center"
+                    android:text="About"
+                    android:textAlignment="center"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+            <!-- Developers Section Layout -->
+
+            <LinearLayout
+                android:id="@+id/developersSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Heading "Developers" using font.otf -->
+                <TextView
+                    android:id="@+id/tvDevelopersHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/font"
+                    android:text="Developers"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textSize="24sp" />
+
+                <!-- Horizontal container for the two MD3 cards -->
+                <LinearLayout
+                    android:id="@+id/cardsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Card 1: Ashutosh Dubey -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardAshutosh"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:contentPadding="16dp"
+                        app:strokeColor="?attr/colorPrimary"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <!-- Developer Name -->
+                            <TextView
+                                android:id="@+id/tvAshutosh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/font"
+                                android:gravity="center"
+                                android:text="Ashutosh Dubey"
+                                android:textColor="?attr/colorOnSurface"
+                                android:textSize="17sp" />
+
+                            <!-- Profile Picture -->
+                            <ImageView
+                                android:id="@+id/imgAshutoshProfile"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginBottom="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/about1" />
+
+                            <!-- Learn More Button -->
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnLearnMore1"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:icon="@drawable/lm"
+                                android:text="Visit"
+                                app:iconGravity="textStart"
+                                app:iconPadding="8dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Card 2: Samarth Shukla -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardSamarth"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:layout_weight="1"
+                        app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                        app:cardCornerRadius="20dp"
+                        app:cardElevation="4dp"
+                        app:contentPadding="16dp"
+                        app:strokeColor="?attr/colorPrimary"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <!-- Developer Name -->
+                            <TextView
+                                android:id="@+id/tvSamarth"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:fontFamily="@font/font"
+                                android:gravity="center"
+                                android:text="Samarth Shukla"
+                                android:textColor="?attr/colorOnSurface"
+                                android:textSize="17sp" />
+
+                            <!-- Profile Picture -->
+                            <ImageView
+                                android:id="@+id/imgSamarthProfile"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginBottom="8dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/about2" />
+
+                            <!-- Learn More Button -->
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnLearnMore2"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:icon="@drawable/lm"
+                                android:text="Visit"
+                                app:iconGravity="textStart"
+                                app:iconPadding="8dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+            </LinearLayout><!-- Card 3: Socials -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardSocials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:contentPadding="20dp"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/difficulty"
+                        android:gravity="center"
+                        android:text="Socials"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="30sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btnInstagram"
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:layout_marginStart="16dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Instagram"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/instagram" />
+
+                        <ImageButton
+                            android:id="@+id/btnFaceBook"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="16dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="FaceBook"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/facebook" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4: Buy Me A Coffee / Donate -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDonate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="2dp"
+                app:contentPadding="20dp"
+                app:strokeColor="?attr/colorPrimary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="20dp"
+                        android:fontFamily="@font/difficulty"
+                        android:gravity="center"
+                        android:text="Buy Me a Coffee"
+                        android:textAlignment="center"
+                        android:textColor="?attr/colorOnSurface"
+                        android:textSize="30sp" />
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:contentDescription="Buy Me a Coffee"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/donate" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnDonate"
+                        style="@style/Widget.Material3.Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/font"
+                        android:text="Click here" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/app_version"
+                android:gravity="center"
+                android:fontFamily="@font/version"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "301158461087",
+    "project_id": "pro-typer-v2",
+    "storage_bucket": "pro-typer-v2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301158461087:android:409a6bb4fc48618ce7bcaa",
+        "android_client_info": {
+          "package_name": "com.samarthshukla.protyper"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzVIbkeXXzVkHRrDotNvpq6c05HyIOvwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

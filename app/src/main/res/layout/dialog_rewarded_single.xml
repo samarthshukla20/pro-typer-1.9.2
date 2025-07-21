@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="24dp"
+    android:background="?attr/colorSurfaceContainerHighest"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:gravity="center"
+    android:theme="@style/ThemeOverlay.Material3.MaterialAlertDialog">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="⏱️ Ran Out of Time?"
+        android:textSize="20sp"
+        android:textColor="?attr/colorOnSurface"
+        android:fontFamily="@font/font"
+        android:gravity="center"
+        android:paddingBottom="16dp"
+        android:lineSpacingExtra="2dp" />
 
     <TextView
         android:id="@+id/rewardMessage"
@@ -12,25 +29,57 @@
         android:layout_height="wrap_content"
         android:text="Watch a short ad to continue the game"
         android:textSize="16sp"
-        android:textColor="#000000"
-        android:paddingBottom="16dp" />
+        android:fontFamily="@font/difficulty"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:paddingBottom="24dp"
+        android:gravity="center" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="end">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnWatchAd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Watch Ad" />
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:weightSum="2">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnCancel"
-            android:layout_width="wrap_content"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Cancel" />
+            android:layout_weight="1"
+            android:text="Cancel"
+            android:backgroundTint="?attr/colorSurfaceContainer"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="2dp"
+            app:cornerRadius="12dp"
+            android:elevation="6dp"
+            android:stateListAnimator="@animator/button_press_animator"
+            android:textColor="?attr/colorOnSurface"
+            android:fontFamily="@font/difficulty"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <Space
+            android:layout_width="12dp"
+            android:layout_height="wrap_content" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnWatchAd"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Watch Ad"
+            android:backgroundTint="?attr/colorSecondaryContainer"
+            app:strokeColor="?attr/colorSecondary"
+            app:strokeWidth="2dp"
+            app:cornerRadius="12dp"
+            android:elevation="6dp"
+            android:stateListAnimator="@animator/button_press_animator"
+            android:textColor="?attr/colorOnSecondaryContainer"
+            android:fontFamily="@font/difficulty"
+            android:clickable="true"
+            android:focusable="true" />
     </LinearLayout>
 </LinearLayout>

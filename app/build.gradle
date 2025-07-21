@@ -54,7 +54,7 @@ dependencies {
     implementation 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC3'
     implementation 'com.google.firebase:firebase-messaging:24.1.1'
     // Use the stable version of Material Components for XML-based UI
-    implementation 'com.google.android.material:material:1.13.0-alpha11'
+    implementation 'com.google.android.material:material:1.14.0-alpha02'
     // Correct stable version for XML UI
 
     // Other dependencies

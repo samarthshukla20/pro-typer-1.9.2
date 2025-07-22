@@ -60,7 +60,7 @@ public class ParagraphActivity extends AppCompatActivity {
     private Random random = new Random();
     private int accuracy = 0;
     private CountDownTimer timer;
-    private static final int TIME_LIMIT = 12000; // 120 seconds per game
+    private static final int TIME_LIMIT = 2000; // 120 seconds per game
     private List<String> usedWords;
     private InterstitialAd interstitialAd;
     private long gameStartTime; // timestamp when game starts
@@ -464,10 +464,11 @@ public class ParagraphActivity extends AppCompatActivity {
         // ⏱️ Start tracking pause time
         pauseStartTime = System.currentTimeMillis();
 
+        dialog.getWindow().setDimAmount(0.9f); // 0 = no dim, 1 = full black
         dialog.show();  // ✅ Show before countdown begins so title updates work
 
         // Countdown timer logic
-        final int[] secondsLeft = {5};
+        final int[] secondsLeft = {500000000};
         dialog.setTitle("Add +15 sec? (" + secondsLeft[0] + "s)");
 
         final Handler handler = new Handler();

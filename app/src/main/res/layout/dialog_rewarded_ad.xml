@@ -3,43 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:background="?attr/colorSurfaceContainerHighest"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="24dp"
-    android:background="?attr/colorSurfaceContainerHighest"
-    android:clipToPadding="false"
-    android:clipChildren="false"
-    android:gravity="center"
     android:theme="@style/ThemeOverlay.Material3.MaterialAlertDialog">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="⏱️ Ran Out of Time?"
-        android:textSize="20sp"
-        android:textColor="?attr/colorOnSurface"
         android:fontFamily="@font/font"
         android:gravity="center"
+        android:lineSpacingExtra="2dp"
         android:paddingBottom="16dp"
-        android:lineSpacingExtra="2dp" />
+        android:text="⏱️ Ran Out of Time?"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/rewardMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Watch a short ad to get +15 seconds of time?"
-        android:textSize="16sp"
         android:fontFamily="@font/difficulty"
-        android:textColor="?attr/colorOnSurfaceVariant"
+        android:gravity="center"
         android:paddingBottom="24dp"
-        android:gravity="center" />
+        android:text="Watch a short ad to get +15 seconds of time?"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:weightSum="2">
 
         <com.google.android.material.button.MaterialButton
@@ -48,17 +48,17 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Cancel"
             android:backgroundTint="?attr/colorSurfaceContainer"
-            app:strokeColor="?attr/colorOutline"
-            app:strokeWidth="2dp"
-            app:cornerRadius="12dp"
-            android:elevation="6dp"
-            android:stateListAnimator="@animator/button_press_animator"
-            android:textColor="?attr/colorOnSurface"
-            android:fontFamily="@font/difficulty"
             android:clickable="true"
-            android:focusable="true" />
+            android:elevation="6dp"
+            android:focusable="true"
+            android:fontFamily="@font/difficulty"
+            android:stateListAnimator="@animator/button_press_animator"
+            android:text="Cancel"
+            android:textColor="?attr/colorOnSurface"
+            app:cornerRadius="12dp"
+            app:strokeColor="?attr/colorOutline"
+            app:strokeWidth="2dp" />
 
         <Space
             android:layout_width="12dp"
@@ -70,16 +70,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Watch Ad"
             android:backgroundTint="?attr/colorSecondaryContainer"
-            app:strokeColor="?attr/colorSecondary"
-            app:strokeWidth="2dp"
-            app:cornerRadius="12dp"
-            android:elevation="6dp"
-            android:stateListAnimator="@animator/button_press_animator"
-            android:textColor="?attr/colorOnSecondaryContainer"
-            android:fontFamily="@font/difficulty"
             android:clickable="true"
-            android:focusable="true" />
+            android:elevation="6dp"
+            android:focusable="true"
+            android:fontFamily="@font/difficulty"
+            android:stateListAnimator="@animator/button_press_animator"
+            android:text="Watch Ad"
+            android:textColor="?attr/colorOnSecondaryContainer"
+            app:cornerRadius="12dp"
+            app:strokeColor="?attr/colorSecondary"
+            app:strokeWidth="2dp" />
     </LinearLayout>
 </LinearLayout>

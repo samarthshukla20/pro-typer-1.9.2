@@ -12,7 +12,7 @@
     <string name="timer_default">10s</string>
     <string name="type_hint">Type here…</string>
 
-<string name="app_version">v1.9.2</string>
+    <string name="app_version">v1.9.2</string>
 
     <!-- Firebase OAuth Client ID -->
     <string name="default_web_client_id">AIzaSyCZ9D-cCTeCN4xHRtgCElRBq0X25ruiPp8</string>
@@ -27,11 +27,11 @@
 
     <!-- Optional: Bottomsheet drag handle clicked (Check its usage in app) -->
     <string name="bottomsheet_drag_handle_clicked">Drag handle clicked</string>
-    
-   <string name="navigation_drawer_open">Open Navigation Drawer</string>
-<string name="navigation_drawer_close">Close Navigation Drawer</string>
-    
-   <!-- Ad units -->
+
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+
+    <!-- Ad units -->
     <!-- ca-app-pub-3940256099942544/4411468910 - test int-->
     <!-- ca-app-pub-6807409350203174/4005808164 - real int-->
     <!-- ca-app-pub-3940256099942544/9214589741 - test ban-->
@@ -41,6 +41,6 @@
     <string name="Interstitial">ca-app-pub-3940256099942544/4411468910</string>
     <string name="Banner">ca-app-pub-3940256099942544/9214589741</string>
     <string name="Rewarded">ca-app-pub-3940256099942544/1712485313</string>
-    
-    
+
+
 </resources>

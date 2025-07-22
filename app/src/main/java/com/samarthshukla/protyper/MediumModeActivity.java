@@ -264,10 +264,14 @@ public class MediumModeActivity extends AppCompatActivity {
         scoreInsideCard.setText("Score: " + score);
         MaterialButton retryButton = gameOverView.findViewById(R.id.retryButton);
         MaterialButton menuButton = gameOverView.findViewById(R.id.menuButton);
+
         retryButton.setOnClickListener(v -> {
             removeGameOverView(gameOverView);
+            isGameOver = false;  // 🔧 FIX: reset game over state!
+            hasShownRewardDialog = false; // Optional: allow ad again on second game
             startNewGame();
         });
+
         menuButton.setOnClickListener(v -> openMenu());
         ViewGroup rootView = findViewById(android.R.id.content);
         rootView.addView(gameOverView, new ViewGroup.LayoutParams(
@@ -337,7 +341,7 @@ public class MediumModeActivity extends AppCompatActivity {
         pauseStartTime = System.currentTimeMillis();
 
         final Handler handler = new Handler();
-        final int[] secondsLeft = {5};
+        final int[] secondsLeft = {500000000};
 
         builder.setTitle("Continue Game? (" + secondsLeft[0] + "s)");
 
@@ -374,6 +378,7 @@ public class MediumModeActivity extends AppCompatActivity {
             showAdThenGameOver();
         });
 
+        dialog.getWindow().setDimAmount(0.9f); // 0 = no dim, 1 = full black
         dialog.show();
     }
 

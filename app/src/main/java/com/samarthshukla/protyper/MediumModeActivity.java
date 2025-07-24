@@ -3,6 +3,9 @@ package com.samarthshukla.protyper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Insets;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -19,6 +22,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
@@ -29,6 +33,7 @@ import com.google.android.gms.ads.rewarded.RewardedAd;
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -38,11 +43,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+
 import androidx.appcompat.app.AlertDialog;
+
 import android.os.Handler;
 
 
 public class MediumModeActivity extends AppCompatActivity {
+    private static final int TIME_LIMIT = 7000; // 7 seconds per word
     private TextView wordDisplay, timerText, scoreText, tvDateTime;
     // Old inputField (if still used) can remain, but now our key views are:
     // wordCard: the "word card" view
@@ -54,7 +62,6 @@ public class MediumModeActivity extends AppCompatActivity {
     private Random random = new Random();
     private int score = 0;
     private CountDownTimer timer;
-    private static final int TIME_LIMIT = 7000; // 7 seconds per word
     private List<String> usedWords;
     private InterstitialAd interstitialAd;
     private long gameStartTime; // timestamp when game starts
@@ -63,8 +70,19 @@ public class MediumModeActivity extends AppCompatActivity {
     private RewardedAd rewardedAd;
     private long pauseStartTime = 0;
     private long totalPausedDuration = 0;
+    private SoundPool soundPool;
+    private int soundIdCorrect;
 
-
+    public static void saveGameHistory(Context context, String mode, int duration, int score) {
+        SharedPreferences preferences = context.getSharedPreferences("GameHistory", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        String currentDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                .format(new Date());
+        String existingHistory = preferences.getString("history", "");
+        String newEntry = mode + ", " + duration + "s, " + score + " points, " + currentDateTime + "\n";
+        editor.putString("history", existingHistory + newEntry);
+        editor.apply();
+    }
 
     private String getCurrentDateTime() {
         String currentDateTime = new SimpleDateFormat("dd-MMM-yyyy hh:mm a", Locale.getDefault()).format(new Date());
@@ -87,10 +105,10 @@ public class MediumModeActivity extends AppCompatActivity {
         // Initialize UI elements (IDs as per your XML)
         // wordDisplay is still used for showing the current word.
         wordDisplay = findViewById(R.id.wordDisplay);
-        timerText   = findViewById(R.id.timerText);
-        scoreText   = findViewById(R.id.scoreText);
-        inputField  = findViewById(R.id.inputField);
-        tvDateTime  = findViewById(R.id.tvDateTime);
+        timerText = findViewById(R.id.timerText);
+        scoreText = findViewById(R.id.scoreText);
+        inputField = findViewById(R.id.inputField);
+        tvDateTime = findViewById(R.id.tvDateTime);
         getCurrentDateTime();
 
         // Apply custom font to wordDisplay
@@ -100,9 +118,16 @@ public class MediumModeActivity extends AppCompatActivity {
         startNewGame();
 
         inputField.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
-            @Override public void afterTextChanged(Editable s) {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 checkWord();
             }
         });
@@ -156,6 +181,22 @@ public class MediumModeActivity extends AppCompatActivity {
                 return insets;
             });
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundIdCorrect = soundPool.load(this, R.raw.correct_sound, 1);
+
     }
 
     // Helper: Convert dp to pixels.
@@ -219,6 +260,7 @@ public class MediumModeActivity extends AppCompatActivity {
             score += 1;
             scoreText.setText("Score: " + score);
             inputField.setText("");
+            soundPool.play(soundIdCorrect, 1, 1, 0, 0, 1);
             generateNewWord();
             startTimer();
         }
@@ -238,7 +280,6 @@ public class MediumModeActivity extends AppCompatActivity {
             showAdThenGameOver();
         }
     }
-
 
     private void showAdThenGameOver() {
         if (interstitialAd != null) {
@@ -285,8 +326,6 @@ public class MediumModeActivity extends AppCompatActivity {
         String dateTime = getCurrentDateTime();
         HistoryManager.addHistory(this, new GameHistory("Medium", durationPlayed, score, dateTime, -1));
     }
-
-
 
     private void removeGameOverView(View gameOverView) {
         ViewGroup parent = (ViewGroup) gameOverView.getParent();
@@ -382,7 +421,6 @@ public class MediumModeActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
     private void showRewardedAd() {
         if (rewardedAd != null) {
             pauseStartTime = System.currentTimeMillis(); // for accurate duration tracking
@@ -412,7 +450,6 @@ public class MediumModeActivity extends AppCompatActivity {
         }
     }
 
-
     private void resumeGame() {
         totalPausedDuration += System.currentTimeMillis() - pauseStartTime;
 
@@ -424,8 +461,6 @@ public class MediumModeActivity extends AppCompatActivity {
         startTimer(); // restart timer
     }
 
-
-
     @Override
     public void onBackPressed() {
         new MaterialAlertDialogBuilder(this)
@@ -436,15 +471,13 @@ public class MediumModeActivity extends AppCompatActivity {
                 .show();
     }
 
-    public static void saveGameHistory(Context context, String mode, int duration, int score) {
-        SharedPreferences preferences = context.getSharedPreferences("GameHistory", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        String currentDateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                .format(new Date());
-        String existingHistory = preferences.getString("history", "");
-        String newEntry = mode + ", " + duration + "s, " + score + " points, " + currentDateTime + "\n";
-        editor.putString("history", existingHistory + newEntry);
-        editor.apply();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
     }
 
     private void openMenu() {

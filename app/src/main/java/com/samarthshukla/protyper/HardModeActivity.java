@@ -3,6 +3,9 @@ package com.samarthshukla.protyper;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Insets;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -63,6 +66,9 @@ public class HardModeActivity extends AppCompatActivity {
     private RewardedAd rewardedAd;
     private long pauseStartTime = 0;
     private long totalPausedDuration = 0;
+    private SoundPool soundPool;
+    private int soundIdCorrect;
+
 
 
 
@@ -156,6 +162,22 @@ public class HardModeActivity extends AppCompatActivity {
                 return insets;
             });
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundIdCorrect = soundPool.load(this, R.raw.correct_sound, 1);
+
     }
 
     // Helper: Convert dp to pixels.
@@ -219,6 +241,7 @@ public class HardModeActivity extends AppCompatActivity {
             score += 1;
             scoreText.setText("Score: " + score);
             inputField.setText("");
+            soundPool.play(soundIdCorrect, 1, 1, 0, 0, 1);
             generateNewWord();
             startTimer();
         }
@@ -446,6 +469,15 @@ public class HardModeActivity extends AppCompatActivity {
         String newEntry = mode + ", " + duration + "s, " + score + " points, " + currentDateTime + "\n";
         editor.putString("history", existingHistory + newEntry);
         editor.apply();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
     }
 
     private void openMenu() {

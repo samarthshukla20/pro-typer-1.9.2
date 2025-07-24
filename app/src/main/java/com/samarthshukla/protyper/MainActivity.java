@@ -1,5 +1,6 @@
 package com.samarthshukla.protyper;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -46,22 +47,17 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 101;
-
     private boolean doubleBackToExitPressedOnce = false;
     private Handler doubleBackHandler = new Handler();
     private BroadcastReceiver networkReceiver;
-
     private InterstitialAd interstitialAd;
     private com.google.android.gms.ads.AdView bannerAdView;
     private Handler bannerRefreshHandler = new Handler();
-
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-
     // Firebase Analytics instance and session start time variable
     private FirebaseAnalytics mFirebaseAnalytics;
     private long sessionStartTime;
-
     private static final String PREFS_NAME = "AppPrefs";
     private static final String KEY_SESSION_COUNT = "session_count";
 

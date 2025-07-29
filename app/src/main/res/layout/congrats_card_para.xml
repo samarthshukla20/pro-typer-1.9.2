@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/congratsCardContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/colorSurface"
+    android:clickable="false"
+    android:focusable="false">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="20dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/congratsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🎉 CONGRATULATIONS!"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/font"
+            android:textColor="?attr/colorOnBackground" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mainCongratsCard"
+            android:layout_width="320dp"
+            android:layout_height="350dp"
+            android:layout_marginBottom="40dp"
+            app:strokeColor="?attr/colorOnPrimaryContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardBackgroundColor="?attr/colorPrimaryContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/Widget.MaterialComponents.CardView"
+            android:layout_marginTop="60dp"
+            app:cardCornerRadius="24dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:id="@+id/congratsMessageInside"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Yay! You completed the paragraph!"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/difficulty"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="16dp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/accuracyCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:strokeColor="?attr/colorOnSecondaryContainer"
+                    android:padding="14dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.CardView"
+                    app:cardCornerRadius="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/accuracy" />
+
+                        <TextView
+                            android:id="@+id/congratsAccuracyText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/difficulty"
+                            android:textColor="?@attr/colorOnPrimaryContainer"
+                            android:layout_marginStart="8dp"
+                            android:text="Accuracy: 0"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/congratsWpmCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    app:strokeColor="?attr/colorOnSecondaryContainer"
+                    android:padding="14dp"
+                    app:cardElevation="6dp"
+                    app:cardBackgroundColor="?attr/colorPrimaryContainer"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.MaterialComponents.CardView"
+                    app:cardCornerRadius="16dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/wpm" />
+
+                        <TextView
+                            android:id="@+id/congratsWpmText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/difficulty"
+                            android:textColor="?@attr/colorOnPrimaryContainer"
+                            android:layout_marginStart="8dp"
+                            android:text="WPM: 0"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/menuButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="110dp"
+                        android:maxWidth="130dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="Menu"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorSurface"
+                        app:cornerRadius="50dp"
+                        app:elevation="8dp"
+                        android:fontFamily="@font/difficulty"
+                        style="@style/Widget.Material3.Button"
+                        android:gravity="center" />
+
+                    <Space
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/nextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="110dp"
+                        android:maxWidth="130dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="24dp"
+                        android:text="Retry"
+                        android:textSize="18sp"
+                        android:textColor="?attr/colorSurface"
+                        app:cornerRadius="50dp"
+                        app:elevation="8dp"
+                        android:fontFamily="@font/difficulty"
+                        style="@style/Widget.Material3.Button"
+                        android:gravity="center" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</FrameLayout>

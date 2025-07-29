@@ -41,8 +41,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
     }
 
     buildFeatures {
@@ -67,6 +67,8 @@ dependencies {
     implementation 'androidx.browser:browser:1.8.0'
     implementation 'com.google.android.play:review:2.0.2'
     implementation 'com.google.android.play:app-update:2.1.0'
+    implementation 'com.airbnb.android:lottie:6.6.6'
+
 
     // Exclude problematic dependencies for SDK 33
     implementation('androidx.credentials:credentials:1.5.0') {

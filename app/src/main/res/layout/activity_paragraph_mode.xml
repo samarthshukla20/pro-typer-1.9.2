@@ -184,7 +184,7 @@
         android:id="@+id/animationDimBg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#88000000"
+        android:background="#00000000"
         android:visibility="gone"
         android:clickable="false"
         android:focusable="false"

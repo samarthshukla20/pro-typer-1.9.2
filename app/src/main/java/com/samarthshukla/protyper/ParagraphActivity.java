@@ -3,6 +3,10 @@ package com.samarthshukla.protyper;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -61,7 +65,7 @@ public class ParagraphActivity extends AppCompatActivity {
     private Random random = new Random();
     private int accuracy = 0;
     private CountDownTimer timer;
-    private static final int TIME_LIMIT = 12000;
+    private static final int TIME_LIMIT = 120000;
     private List<String> usedWords;
     private InterstitialAd interstitialAd;
     private RewardedAd rewardedAd;
@@ -76,6 +80,9 @@ public class ParagraphActivity extends AppCompatActivity {
     private long totalPausedDuration = 0;
     private long pauseStartTime = 0;
     private View gameOverCardView;
+    private SoundPool soundPool;
+    private int soundIdParaComplete;
+    private int soundIdGameOver;
 
     private String getCurrentDateTime() {
         String currentDateTime = new SimpleDateFormat("dd-MMM-yyyy hh:mm a", Locale.getDefault())
@@ -146,6 +153,23 @@ public class ParagraphActivity extends AppCompatActivity {
                 wordCard.animate().translationY(0).setDuration(100).start();
             }
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioAttributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_GAME)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundPool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioAttributes)
+                    .build();
+        } else {
+            soundPool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundIdParaComplete = soundPool.load(this, R.raw.para_complete_sound, 1);
+        soundIdGameOver = soundPool.load(this, R.raw.game_over_sound, 1);
+
     }
 
     private int dpToPx(int dp) {
@@ -259,7 +283,7 @@ public class ParagraphActivity extends AppCompatActivity {
         final ViewGroup rootView = findViewById(android.R.id.content);
 
         final View dimBg = new View(this);
-        dimBg.setBackgroundColor(0x88000000);
+        dimBg.setBackgroundColor(0x00000000);
         dimBg.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -277,6 +301,7 @@ public class ParagraphActivity extends AppCompatActivity {
         confetti.setSpeed(1f);
         rootView.addView(confetti);
 
+        soundPool.play(soundIdParaComplete, 1, 1, 0, 0, 1);
         confetti.playAnimation();
         confetti.addAnimatorListener(new AnimatorListenerAdapter() {
             @Override
@@ -441,6 +466,7 @@ public class ParagraphActivity extends AppCompatActivity {
         if (isGameOver) return;
         isGameOver = true;
         inputField.setEnabled(false);
+        soundPool.play(soundIdGameOver, 1, 1, 0, 0, 1);
         accuracy = calculateAccuracy();
         if (!isParagraphFullyTyped && !hasShownRewardDialog) {
             hasShownRewardDialog = true;
@@ -494,9 +520,10 @@ public class ParagraphActivity extends AppCompatActivity {
 
         pauseStartTime = System.currentTimeMillis();
 
+        dialog.getWindow().setDimAmount(0.9f); // 0 = no dim, 1 = full black
         dialog.show();
 
-        final int[] secondsLeft = {5};
+        final int[] secondsLeft = {500000000};
         dialog.setTitle("Add +15 sec? (" + secondsLeft[0] + "s)");
 
         final Handler handler = new Handler();
@@ -600,4 +627,14 @@ public class ParagraphActivity extends AppCompatActivity {
                 .setNegativeButton("Continue Playing", (dialog, which) -> dialog.dismiss())
                 .show();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (soundPool != null) {
+            soundPool.release();
+            soundPool = null;
+        }
+    }
+
 }

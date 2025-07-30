@@ -69,6 +69,7 @@ public class EasyModeActivity extends AppCompatActivity {
     private long totalPausedDuration = 0;
     private SoundPool soundPool;
     private int soundIdCorrect;
+    private int soundIdGameOver;
 
 
 
@@ -177,7 +178,7 @@ public class EasyModeActivity extends AppCompatActivity {
         }
 
         soundIdCorrect = soundPool.load(this, R.raw.correct_sound, 1);
-
+        soundIdGameOver = soundPool.load(this, R.raw.game_over_sound, 1);
 
     }
     
@@ -253,6 +254,7 @@ public class EasyModeActivity extends AppCompatActivity {
         isGameOver = true;
 
         inputField.setEnabled(false);
+        soundPool.play(soundIdGameOver, 1, 1, 0, 0, 1);
 
         if (!hasShownRewardDialog) {
             hasShownRewardDialog = true;
